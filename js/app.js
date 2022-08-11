@@ -203,7 +203,6 @@ function overlayNextImg() {
     lightboxGallery[lightboxIndex + 3].classList.remove("active");
     lightboxGallery[lightboxIndex].classList.add("active");
     lightboxHero.src = `images/image-product-${img}.jpg`;
-    console.log(lightboxGallery[lightboxIndex]);
   } else {
     img++;
     lightboxIndex++;
