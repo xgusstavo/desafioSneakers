@@ -1,0 +1,656 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+header .hidden {
+  display: none;
+}
+header .logo {
+  padding-bottom: 0.5rem;
+}
+header .menuGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2rem;
+  gap: 2rem;
+}
+header .menuGroup .btnOpenMenu:hover {
+  cursor: pointer;
+}
+header .menuGroup .menu {
+  background-color: hsla(0deg, 0%, 0%, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 10;
+}
+header .menuGroup .menu .slideMenu {
+  background-color: hsl(0deg, 0%, 100%);
+  height: 100%;
+  width: 66vw;
+  padding: 2.3rem;
+}
+header .menuGroup .menu .slideMenu img:hover {
+  cursor: pointer;
+}
+header .menuGroup .menu .slideMenu ul {
+  margin-top: 5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  list-style: none;
+}
+header .menuGroup .menu .slideMenu ul a,
+header .menuGroup .menu .slideMenu ul :active,
+header .menuGroup .menu .slideMenu ul :visited {
+  color: hsl(220deg, 13%, 13%);
+  text-decoration: unset;
+}
+header .menuGroup .menu .slideMenu ul a:hover,
+header .menuGroup .menu .slideMenu ul :active:hover,
+header .menuGroup .menu .slideMenu ul :visited:hover {
+  text-decoration: underline;
+  opacity: 0.75;
+}
+header .cart-avatar-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.3rem;
+  margin: 2rem;
+}
+header .cart-avatar-group .cart-btn {
+  cursor: pointer;
+  position: relative;
+}
+header .cart-avatar-group .cart-btn img {
+  width: 2rem;
+}
+header .cart-avatar-group .cart-btn .cart-count {
+  position: absolute;
+  top: -25%;
+  right: -25%;
+  background-color: hsl(26deg, 100%, 55%);
+  color: hsl(0deg, 0%, 100%);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 100%;
+  padding: 0.1rem 0.6rem;
+  border-radius: 1rem;
+}
+header .cart-avatar-group .avatar {
+  width: 2.5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+header .cart-avatar-group .avatar:hover {
+  border: 2px solid hsl(26deg, 100%, 55%);
+  border-radius: 50%;
+}
+header .cart {
+  position: absolute;
+  top: calc(100% + 1rem);
+  width: 34.5rem;
+  right: 1rem;
+  border-radius: 1rem;
+  z-index: 1;
+  background-color: hsl(0deg, 0%, 100%);
+  box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+}
+header .cart .cartHeader {
+  font-weight: 700;
+  font-size: 1.6rem;
+  padding: 2.4rem 2rem;
+  color: hsla(0deg, 0%, 0%, 0.75);
+}
+header .cart .productsInCart .item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  color: hsl(220deg, 14%, 75%);
+  padding: 0 3rem;
+}
+header .cart .productsInCart .item .itemProduct {
+  width: 5rem;
+  border-radius: 0.5rem;
+}
+header .cart .productsInCart .item .details {
+  display: flex;
+  flex-direction: column;
+}
+header .cart .productsInCart .item .details .productName {
+  text-transform: capitalize;
+  line-height: 2.6rem;
+}
+header .cart .productsInCart .item .details .priceGroup {
+  display: flex;
+  gap: 1rem;
+}
+header .cart .productsInCart .item .details .priceGroup .totalAmount {
+  color: hsla(0deg, 0%, 0%, 0.75);
+  font-weight: 700;
+}
+header .cart .productsInCart .item .iconDelete {
+  cursor: pointer;
+}
+header .cart .msgEmpty {
+  color: hsl(219deg, 9%, 45%);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 7.8rem 0;
+}
+header .cart .checkout {
+  background-color: hsl(26deg, 100%, 55%);
+  color: hsl(0deg, 0%, 100%);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 2.4rem;
+  padding: 1.8rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+header .cart .checkout:hover {
+  opacity: 0.5;
+}
+
+.lightbox {
+  position: relative;
+}
+.lightbox .productHero {
+  width: 100%;
+  cursor: pointer;
+}
+.lightbox .previous {
+  left: 4%;
+}
+.lightbox .previous:hover {
+  left: 3%;
+}
+.lightbox .next {
+  right: 4%;
+}
+.lightbox .next:hover {
+  right: 3%;
+}
+.lightbox .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.lightbox .thumbGallery {
+  display: flex;
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: space-between;
+}
+.lightbox .thumbGallery .pic {
+  display: flex;
+  width: 20%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+.lightbox .thumbGallery .pic img {
+  width: 100%;
+}
+.lightbox .thumbGallery .pic img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.lightbox .thumbGallery .active {
+  border: 3px solid hsl(26deg, 100%, 55%);
+}
+.lightbox .thumbGallery .active img {
+  opacity: 0.5;
+}
+.lightbox .hidden {
+  display: none;
+}
+
+.product {
+  padding: 2rem 2.4rem 4.4rem 2.4rem;
+}
+.product .companyName {
+  color: hsl(26deg, 100%, 55%);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+}
+.product .title {
+  color: hsla(0deg, 0%, 0%, 0.75);
+  font-weight: 700;
+  font-size: 2.8rem;
+  text-transform: capitalize;
+  margin: 1.3rem 0;
+}
+.product .description {
+  color: hsl(219deg, 9%, 45%);
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+.product .priceWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+.product .priceWrapper .group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.product .priceWrapper .group .price {
+  font-size: 3rem;
+  font-weight: 700;
+  color: hsla(0deg, 0%, 0%, 0.75);
+}
+.product .priceWrapper .group .discount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: hsl(26deg, 100%, 55%);
+  background-color: hsl(25deg, 100%, 94%);
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.product .priceWrapper .oldPrice {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: hsl(220deg, 14%, 75%);
+  text-decoration: line-through;
+}
+.product .countBtnGroup {
+  margin-top: 2rem;
+}
+.product .countBtnGroup .countWrapper {
+  background-color: hsl(223deg, 64%, 98%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  height: 6rem;
+  border-radius: 1rem;
+}
+.product .countBtnGroup .countWrapper .counter {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.product .countBtnGroup .countWrapper #btnMinus,
+.product .countBtnGroup .countWrapper #btnPlus {
+  cursor: pointer;
+  padding: 1rem;
+}
+.product .countBtnGroup .countWrapper #btnMinus:hover,
+.product .countBtnGroup .countWrapper #btnPlus:hover {
+  opacity: 0.5;
+}
+.product .countBtnGroup .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  color: hsl(0deg, 0%, 100%);
+  background-color: hsl(26deg, 100%, 55%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 30px 0 hsl(25deg, 100%, 94%);
+  cursor: pointer;
+}
+.product .countBtnGroup .btn img {
+  height: 1.5rem;
+  filter: brightness(300%);
+}
+.product .countBtnGroup .btn:hover {
+  opacity: 0.5;
+}
+
+@media screen and (min-width: 835px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  header .menuGroup .menuHamburguer {
+    display: none;
+  }
+  header .menuGroup .menu {
+    display: block;
+    position: unset;
+    height: unset;
+  }
+  header .menuGroup .menu .slideMenu {
+    width: unset;
+    padding: 0;
+  }
+  header .menuGroup .menu .slideMenu img {
+    display: none;
+  }
+  header .menuGroup .menu .slideMenu ul {
+    flex-direction: row;
+    margin: 0 0 0 3.8rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    gap: 3rem;
+  }
+  header .menuGroup .menu .slideMenu ul a {
+    display: block;
+    padding: 4rem 0;
+    border-bottom: 3px solid transparent;
+  }
+  header .menuGroup .menu .slideMenu ul a:hover {
+    color: hsl(220deg, 13%, 13%);
+    text-decoration: none;
+    border-bottom: 3px solid hsl(26deg, 100%, 55%);
+  }
+  header .cart-avatar-group {
+    gap: 4rem;
+    margin-right: 8rem;
+  }
+  header .cart-avatar-group .cart-btn .cartBtn {
+    width: 2.3rem;
+  }
+  header .cart-avatar-group .avatar {
+    width: 4.5rem;
+  }
+  header .cart {
+    right: -5rem;
+    top: 90%;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 5rem;
+  }
+  .content .lightbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .content .lightbox .productHero {
+    border-radius: 1rem;
+    width: 40rem;
+  }
+  .content .lightbox .arrow {
+    display: none;
+  }
+  .content .lightbox .thumbGallery {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .content .lightbox .thumbGallery .pic {
+    display: flex;
+    width: 15%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 3px solid transparent;
+  }
+  .content .lightbox .thumbGallery .pic img {
+    width: 100%;
+  }
+  .content .lightbox .thumbGallery .pic img:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .content .lightbox .thumbGallery .active {
+    border: 3px solid hsl(26deg, 100%, 55%);
+  }
+  .content .lightbox .thumbGallery .active img {
+    opacity: 0.5;
+  }
+  .content .product {
+    text-align: center;
+  }
+  .content .product .title {
+    font-size: 4.4rem;
+    margin: 1.8rem 0 3rem 0;
+  }
+  .content .product .description {
+    font-size: 1.65rem;
+  }
+  .content .product .priceWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.4rem;
+    gap: 0.8rem;
+  }
+  .content .product .countBtnGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .content .product .countBtnGroup .countWrapper {
+    width: 62%;
+    border-radius: 1rem;
+    padding: 1.2rem 0.5rem;
+    margin-bottom: 0;
+  }
+  .content .product .countBtnGroup .btn {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1150px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  header .menuGroup .menuHamburguer {
+    display: none;
+  }
+  header .menuGroup .menu {
+    display: block;
+    position: unset;
+    height: unset;
+  }
+  header .menuGroup .menu .slideMenu {
+    width: unset;
+    padding: 0;
+  }
+  header .menuGroup .menu .slideMenu img {
+    display: none;
+  }
+  header .menuGroup .menu .slideMenu ul {
+    flex-direction: row;
+    margin: 0 0 0 3.8rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    gap: 3rem;
+  }
+  header .menuGroup .menu .slideMenu ul a {
+    display: block;
+    padding: 4rem 0;
+    border-bottom: 3px solid transparent;
+  }
+  header .menuGroup .menu .slideMenu ul a:hover {
+    color: hsl(220deg, 13%, 13%);
+    text-decoration: none;
+    border-bottom: 3px solid hsl(26deg, 100%, 55%);
+  }
+  header .cart-avatar-group {
+    gap: 4rem;
+    margin-right: 8rem;
+  }
+  header .cart-avatar-group .cart-btn .cartBtn {
+    width: 2.3rem;
+  }
+  header .cart-avatar-group .avatar {
+    width: 4.5rem;
+  }
+  header .cart {
+    right: -5rem;
+    top: 90%;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+    padding: 2rem 5rem;
+  }
+  .content .lightbox .productHero {
+    border-radius: 1rem;
+    width: 40rem;
+  }
+  .content .lightbox .arrow {
+    display: none;
+  }
+  .content .lightbox .thumbGallery {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .content .lightbox .thumbGallery .pic {
+    display: flex;
+    width: 20%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 3px solid transparent;
+  }
+  .content .lightbox .thumbGallery .pic img {
+    width: 100%;
+  }
+  .content .lightbox .thumbGallery .pic img:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .content .lightbox .thumbGallery .active {
+    border: 3px solid hsl(26deg, 100%, 55%);
+  }
+  .content .lightbox .thumbGallery .active img {
+    opacity: 0.5;
+  }
+  .content .product {
+    text-align: start;
+  }
+  .content .product .title {
+    font-size: 4.4rem;
+    margin: 1.8rem 0 3rem 0;
+  }
+  .content .product .description {
+    font-size: 1.65rem;
+  }
+  .content .product .priceWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.4rem;
+    gap: 0.8rem;
+  }
+  .content .product .countBtnGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .content .product .countBtnGroup .countWrapper {
+    width: 62%;
+    border-radius: 1rem;
+    padding: 1.2rem 0.5rem;
+    margin-bottom: 0;
+  }
+  .content .product .countBtnGroup .btn {
+    width: 100%;
+  }
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: hsla(0deg, 0%, 0%, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.overlay .btnClose {
+  width: 57rem;
+  text-align: end;
+  padding: 2rem 0;
+}
+.overlay .btnClose img {
+  cursor: pointer;
+  filter: brightness(300%);
+}
+.overlay .lightbox {
+  max-width: 50rem;
+}
+.overlay .lightbox .producHero {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.overlay .lightbox .next {
+  display: flex;
+  right: 0;
+  transform: translateX(50%);
+}
+.overlay .lightbox .previous {
+  display: flex;
+  left: 0;
+  transform: translateX(-50%);
+}
+.overlay .lightbox .arrow {
+  top: 40%;
+}
+
+.hidden {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

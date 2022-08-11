@@ -1,0 +1,77 @@
+.lightbox {
+  position: relative;
+
+  .productHero {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .previous {
+    left: 4%;
+    &:hover {
+      left: 3%;
+    }
+  }
+
+  .next {
+    right: 4%;
+    &:hover {
+      right: 3%;
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: $white;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+  }
+
+  .thumbGallery {
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    justify-content: space-between;
+
+    .pic {
+      display: flex;
+      width: 20%;
+      height: fit-content;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 3px solid transparent;
+
+      img {
+        width: 100%;
+
+        &:hover {
+          opacity: 0.5;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .active {
+      border: 3px solid $orange;
+      img {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}
